@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Notes
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
@@ -24,3 +24,7 @@ def addNotes(request):
         notes.save()
         messages.success(request, f"Notes Added from {request.user.username} Successfully!")
         return HttpResponseRedirect('/notes')
+
+def deleteNote(request, pk=None):
+    Notes.objects.get(id=pk).delete()
+    return redirect('/notes')
