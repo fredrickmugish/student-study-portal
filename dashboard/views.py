@@ -22,7 +22,7 @@ def addNotes(request):
         notes.description=d
         notes.user=user
         notes.save()
-        messages.success(request, f"Notes Added from {request.user.username} Successfully!")
+        messages.success(request, f"{request.user.username}, your notes are added successfully!")
         return HttpResponseRedirect('/notes')
 
 def deleteNote(request, pk=None):
