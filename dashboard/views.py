@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Notes
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
+from django.views import generic
 
 # Create your views here.
 def home(request):
@@ -28,3 +29,6 @@ def addNotes(request):
 def deleteNote(request, pk=None):
     Notes.objects.get(id=pk).delete()
     return redirect('/notes')
+
+class NotesDetailView(generic.DetailView):
+    model = Notes
