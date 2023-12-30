@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Notes
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -21,4 +22,5 @@ def addNotes(request):
         notes.description=d
         notes.user=user
         notes.save()
+        messages.success(request, f"Notes Added from {request.user.username} Successfully!")
         return HttpResponseRedirect('/notes')
