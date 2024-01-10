@@ -3,7 +3,7 @@ from .models import Notes, Homework
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.views import generic
-from .forms import HomeworkForm
+
 
 
 # Create your views here.
@@ -36,7 +36,6 @@ class NotesDetailView(generic.DetailView):
     model = Notes
 
 def homework(request):
-    form = HomeworkForm()
     homework = Homework.objects.filter(user=request.user)
 
     if len(homework) == 0:
@@ -44,5 +43,31 @@ def homework(request):
     else:
          homework_done = False
 
-    context = {'homeworks':homework, 'homeworks_done':homework_done, 'form':form}
+    context = {'homeworks':homework, 'homeworks_done':homework_done,}
     return render(request, 'dashboard/homework.html', context)
+
+
+def addHomework(request):
+    if request.method=="POST":
+        s=request.POST['subject']
+        t=request.POST['title']
+        d=request.POST['description']
+        u=request.POST['due']
+
+        if 'is_finish' in request.POST:
+            f = request.POST['is_finish']
+        else:
+            
+            f = False
+
+        user=request.user
+        homework = Homework()
+        homework.title=t
+        homework.description=d
+        homework.subject=s
+        homework.due=u
+        homework.is_finish=f
+        homework.user=user
+        homework.save()
+        messages.success(request, f"{request.user.username}, your homework are added successfully!")
+        return HttpResponseRedirect('/homework')
