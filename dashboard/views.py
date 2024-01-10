@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import Notes
+from .models import Notes, Homework
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.views import generic
+from .forms import HomeworkForm
+
 
 # Create your views here.
 def home(request):
@@ -32,3 +34,15 @@ def deleteNote(request, pk=None):
 
 class NotesDetailView(generic.DetailView):
     model = Notes
+
+def homework(request):
+    form = HomeworkForm()
+    homework = Homework.objects.filter(user=request.user)
+
+    if len(homework) == 0:
+        homework_done = True
+    else:
+         homework_done = False
+
+    context = {'homeworks':homework, 'homeworks_done':homework_done, 'form':form}
+    return render(request, 'dashboard/homework.html', context)
