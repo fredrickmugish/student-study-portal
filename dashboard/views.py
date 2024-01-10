@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Notes, Homework, Youtube
+from .models import Notes, Homework, Youtube, Todo
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.views import generic
@@ -127,3 +127,50 @@ def searchYoutube(request):
         
         
     return render(request, 'dashboard/youtube.html', context)
+
+def todo(request):
+    todo = Todo.objects.filter(user=request.user)
+
+    if len(todo) == 0:
+        todos_done = True
+    else:
+         todos_done = False
+
+    context = {
+        'todos': todo,
+        'todos_done':todos_done
+    }
+    return render(request, 'dashboard/todo.html', context)
+
+def addTodo(request):
+    if request.method == "POST":
+        title = request.POST['title']
+
+        if 'is_finish' in request.POST:
+            is_finished = request.POST['is_finish'] == 'on'
+        else:
+            
+            is_finished = False
+
+        user=request.user
+        todo = Todo()
+        todo.title = title
+        todo.user = user
+        todo.is_finished = is_finished
+        todo.save()
+        messages.success(request, f"{request.user.username}, your todo are added successfully!")
+        return redirect('/todo')
+
+
+def update_todo(request, pk=None):
+    todo = Todo.objects.get(id=pk)
+    if todo.is_finished == True:
+        todo.is_finished = False
+    else:
+        todo.is_finished = True
+    todo.save()
+    return redirect('/todo')
+
+def deleteTodo(request, pk=None):
+    Todo.objects.get(id=pk).delete()
+    return redirect('/todo')

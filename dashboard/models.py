@@ -37,6 +37,16 @@ class Youtube(models.Model):
         verbose_name = "youtube"
         verbose_name_plural = "youtube"
 
+class Todo(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    is_finished = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.title
 
+    class Meta:
+        verbose_name = "todo"
+        verbose_name_plural = "todo"
     
 
