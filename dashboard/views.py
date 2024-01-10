@@ -75,3 +75,12 @@ def addHomework(request):
 def deleteHomework(request, pk=None):
     Homework.objects.get(id=pk).delete()
     return redirect('/homework')
+
+def update_homework(request, pk=None):
+    homework = Homework.objects.get(id=pk)
+    if homework.is_finished == True:
+        homework.is_finished = False
+    else:
+        homework.is_finished = True
+    homework.save()
+    return redirect('/homework')

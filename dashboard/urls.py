@@ -11,4 +11,5 @@ urlpatterns = [
     path('homework/', views.homework, name="homework"),
     path('homework/add', views.addHomework),
     path('delete_homework/<int:pk>',views.deleteHomework, name='delete_homework'),
+    path('update_homework/<int:pk>', views.update_homework, name="update_homework"),
 ]
