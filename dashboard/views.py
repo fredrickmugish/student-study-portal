@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Notes, Homework
+from .models import Notes, Homework, Youtube
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.views import generic
+from youtubesearchpython import VideosSearch
 
 
 
@@ -84,3 +85,45 @@ def update_homework(request, pk=None):
         homework.is_finished = True
     homework.save()
     return redirect('/homework')
+
+def youtube(request):
+    youtube = Youtube.objects.filter(user=request.user)
+    return render(request, 'dashboard/youtube.html')
+
+def searchYoutube(request):
+    context = {}
+    if request.method=="POST":
+        text=request.POST.get('text','')
+        video = VideosSearch(text, limit=10)
+
+        result_list = []
+        for i in video.result()['result']:
+            result_dict = {
+             'input': text,
+             'title': i['title'],
+             'duration': i['duration'],
+             'thumbnail': i['thumbnails'][0]['url'],
+             'channel': i['channel']['name'],
+             'link': i['link'],
+             'views': i['viewCount']['short'],
+             'published': i['publishedTime'],
+            }
+
+            desc = ''
+            if i['descriptionSnippet']:
+                for j in i['descriptionSnippet']:
+                    desc += j['text']
+            result_dict['description'] = desc
+            result_list.append(result_dict)
+            context = {
+               'results': result_list
+            }
+        
+        user=request.user
+        youtube = Youtube()
+        youtube.text = text
+        youtube.user = user
+        youtube.save()
+        
+        
+    return render(request, 'dashboard/youtube.html', context)

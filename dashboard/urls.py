@@ -12,4 +12,6 @@ urlpatterns = [
     path('homework/add', views.addHomework),
     path('delete_homework/<int:pk>',views.deleteHomework, name='delete_homework'),
     path('update_homework/<int:pk>', views.update_homework, name="update_homework"),
+    path('youtube/',views.youtube, name="youtube"),
+     path('youtube/search', views.searchYoutube),
 ]
