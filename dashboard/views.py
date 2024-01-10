@@ -71,3 +71,7 @@ def addHomework(request):
         homework.save()
         messages.success(request, f"{request.user.username}, your homework are added successfully!")
         return HttpResponseRedirect('/homework')
+    
+def deleteHomework(request, pk=None):
+    Homework.objects.get(id=pk).delete()
+    return redirect('/homework')

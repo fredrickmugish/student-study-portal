@@ -10,4 +10,5 @@ urlpatterns = [
     path('notes_detail/<int:pk>',views.NotesDetailView.as_view(), name='notes_detail'),
     path('homework/', views.homework, name="homework"),
     path('homework/add', views.addHomework),
+    path('delete_homework/<int:pk>',views.deleteHomework, name='delete_homework'),
 ]
