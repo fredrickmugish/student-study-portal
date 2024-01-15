@@ -7,19 +7,20 @@
 
   <hr> <br>
   <div class="row">
-    <div class="col-md-3">
-      <a href="notes/">
-        <div class="card">
-          <img class="card-img-top" src="{% static 'images/notepad.png' %}" alt="Notes image">
-          <div class="card-body">
-            <h5 class="card-title ">
-              Notes
-            </h5>
-            Create Notes to refer them later. They are stored permanently until deleted
-          </div>
-        </div>
-      </a>
+   
+<div class="col-md-3">
+  <a href="#">
+    <div class="card">
+      <img class="card-img-top" src="{% static 'images/lecture.png' %}" alt="Notes image">
+      <div class="card-body">
+        <h5 class="card-title ">
+          Classroom
+        </h5>
+        Welcome to the virtual classroom
+      </div>
     </div>
+  </a>
+</div>
 
     <div class="col-md-3">
       <a href="homework/">
@@ -29,44 +30,12 @@
             <h5 class="card-title ">
               Assignments
             </h5>
-            Add assignments and assign them deadlines. They will be displayed prioritised by deadlines
+            Course Assignments from lecturers
           </div>
         </div>
       </a>
     </div>
-    <div class="col-md-3">
-      <a href="youtube/">
-        <div class="card">
-          <img class="card-img-top" src="{% static 'images/search.png' %}" alt="Notes image">
-          <div class="card-body">
-            <h5 class="card-title ">
-              Youtube
-            </h5>
-            Search Youtube and select your desired video to play it on youtube
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-md-3">
-      <a href="todo/">
-        <div class="card">
-          <i class="icofont-list"></i>
-        
-          <img class="card-img-top" src="{% static 'images/list.png' %}" alt="Notes image">
-        
-          <div class="card-body">
-            <h5 class="card-title ">
-              To Do
-            </h5>
-            Add your to-do lists for your day and remove them as you finish
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-  <br><br>
 
-  <div class="row">
     <div class="col-md-3 ">
       <a href="#">
         <div class="card mt-20">
@@ -75,14 +44,31 @@
             <h5 class="card-title ">
               Books
             </h5>
-            Browse books from a list of neatly organised book menu
+            Get access to books from the library
           </div>
         </div>
       </a>
     </div>
+    
 
-
-
+    <div class="col-md-3">
+      <a href="#">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/university.png' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Academic Advice
+            </h5>
+            Receive advice for academic excellence and future career success
+          </div>
+        </div>
+      </a>
+    </div>
+    
+  </div>
+  <br><br>
+<!--
+  <div class="row">
     <div class="col-md-3">
       <a href="#">
         <div class="card">
@@ -97,6 +83,22 @@
         </div>
       </a>
     </div>
+  -->
+    <!--
+    <div class="col-md-3">
+      <a href="youtube/">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/search.png' %}" alt="Notes image">
+          <div class="card-body">
+            <h5 class="card-title ">
+              Youtube
+            </h5>
+            Search Youtube and select your desired video to play it on youtube
+          </div>
+        </div>
+      </a>
+    </div>
+
     <div class="col-md-3">
       <a href="#">
         <div class="card">
@@ -110,7 +112,6 @@
         </div>
       </a>
     </div>
-
 
     <div class="col-md-3">
       <a href="#">
@@ -126,40 +127,41 @@
       </a>
     </div>
     </div>
-
-<br><br>
-<!-- Additional Cards -->
-
+  -->
 
 
 <div class="row">
   <div class="col-md-3">
     <a href="#">
       <div class="card">
-        <img class="card-img-top" src="{% static 'images/university.png' %}" alt="Notes image">
+        <img class="card-img-top" src="{% static 'images/tst.jpeg' %}" alt="Notes image">
         <div class="card-body">
-          <h5 class="card-title ">
-            Academic Advice
+          <h5 class="card-title">
+            Online Test 
           </h5>
-          Receive advice for academic excellence and future career success
+          Stay tuned for upcoming online test
         </div>
       </div>
     </a>
   </div>
 
+
+
+
   <div class="col-md-3">
-    <a href="#">
+    <a href="notes/">
       <div class="card">
-        <img class="card-img-top" src="{% static 'images/tst.jpeg' %}" alt="Notes image">
+        <img class="card-img-top" src="{% static 'images/notepad.png' %}" alt="Notes image">
         <div class="card-body">
           <h5 class="card-title ">
-            Test Yourself
+            Notes
           </h5>
-          Challenge your understanding and enhance your knowledge by engaging in interactive quizzes and assessments 
+          Get access to the uploaded notes from lecturers
         </div>
       </div>
     </a>
   </div>
+
 
 
   <div class="col-md-3">
@@ -170,13 +172,30 @@
           <h5 class="card-title ">
             Community Forum
           </h5>
-          Join discussions, ask questions, and engage with a community of learners to share insights and experiences.
+          Engage with a community of learners to share insights and experiences.
+        </div>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="col-md-3">
+    <a href="todo/">
+      <div class="card">
+        <i class="icofont-list"></i>
+      
+        <img class="card-img-top" src="{% static 'images/ann.png' %}" alt="Notes image">
+      
+        <div class="card-body">
+          <h5 class="card-title ">
+            Announcement
+          </h5>
+          Stay tuned for new updates
         </div>
       </div>
     </a>
   </div>
 </div>
-
 
 
 </section>
